@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
     <title>자기소개 홈페이지</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "style.css" %}" />
 </head>
 <body>
     <header>
@@ -11,7 +12,7 @@
         <div>
             <div class="profile main">
                 <div class="circle" style="width: 75px; height: 75px;" >
-                    <img src="boy.png" width="75px" height="75px">
+                    <img src="static/boy.png" width="75px" height="75px">
                 </div>
                 <ul style="list-style-type: none; padding-left: 0px; font-weight: bold;">
                     <li>이름 : 안석환</li>
@@ -33,11 +34,11 @@
         <div class="post">
             <div class="top">나라는 사람</div>
             <div class="circle">
-                <img src="boy.png" width="50px" height="50px">
+                <img src="static/boy.png" width="50px" height="50px">
             </div>
             <span>안석환</span>
             <div>
-                <img src="자기소개.png" width="585px" height="400px">
+                <img src="static/자기소개.png" width="585px" height="400px">
             </div>
             <div style="margin-top: 10px; margin-left: 5px;">
                 <div class="heart"></div>
@@ -58,11 +59,11 @@
         <div class="post">
             <div class="top">나의 꿈은</div>
             <div class="circle">
-                <img src="boy.png" width="50px" height="50px">
+                <img src="static/boy.png" width="50px" height="50px">
             </div>
             <span>안석환</span>
             <div>
-                <img src="개발자.png" width="100%" height="100%">
+                <img src="static/개발자.png" width="100%" height="100%">
             </div>
             <div style="margin-top: 10px; margin-left: 5px;">
                 <div class="heart"></div>
@@ -81,11 +82,11 @@
         <div class="post">
             <div class="top">나의 mbti는</div>
             <div class="circle">
-                <img src="boy.png" width="50px" height="50px">
+                <img src="static/boy.png" width="50px" height="50px">
             </div>
             <span>안석환</span>
             <div>
-                <img src="mbti.png" width="580px" height="400px">
+                <img src="static/mbti.png" width="580px" height="400px">
             </div>
             <div style="margin-top: 10px; margin-left: 5px;">
                 <div class="heart"></div>
@@ -106,12 +107,12 @@
         <div class="post">
             <div class="top">나의 취미는</div>
             <div class="circle">
-                <img src="boy.png" width="50px" height="50px"> 
+                <img src="static/boy.png" width="50px" height="50px"> 
             </div>
             <span style="position: absolute; margin-left: 10px; margin-top: 15px;">안석환</span>
             <div>
-                <img src="주짓수.png" width="290px" height="400px" style="display: inline-block;">
-                <img src="주짓수2.png" width="290px" height="400px"style="display: inline-block;">
+                <img src="static/주짓수.png" width="290px" height="400px" style="display: inline-block;">
+                <img src="static/주짓수2.png" width="290px" height="400px"style="display: inline-block;">
             </div>
             <div style="margin-top: 10px; margin-left: 5px;">
                 <div class="heart"></div>
@@ -130,13 +131,13 @@
         <div class="post">
             <div class="top">코로나 종식 후 하고 싶은 일</div>
             <div class="circle">
-                <img src="boy.png" width="50px" height="50px"> 
+                <img src="static/boy.png" width="50px" height="50px"> 
             </div>
             <span>안석환</span>
             <div>
-                <img src="에펠탑.png" width="290px" height="200px" style="display: inline-block;">
-                <img src="유럽명소.png" width="290px" height="200px" style="display: inline-block;">
-                <img src="콜로세움.png" width="585px" height="200px"style="display: inline-block;">
+                <img src="static/에펠탑.png" width="290px" height="200px" style="display: inline-block;">
+                <img src="static/유럽명소.png" width="290px" height="200px" style="display: inline-block;">
+                <img src="static/콜로세움.png" width="585px" height="200px"style="display: inline-block;">
             </div>
             <div style="margin-top: 10px; margin-left: 5px;">
                 <div class="heart"></div>
@@ -155,13 +156,13 @@
         <div class="post">
             <div class="top">올해의 목표</div>
             <div class="circle">
-                <img src="boy.png" width="50px" height="50px"> 
+                <img src="static/boy.png" width="50px" height="50px"> 
             </div>
             <span>안석환</span>
             <div>
-                <img src="멋쟁이사자처럼.png" width="290px" height="200px" style="display: inline-block;">
-                <img src="유튜브.png" width="290px" height="200px" style="display: inline-block;">
-                <img src="개발.png" width="585px" height="200px"style="display: inline-block;">
+                <img src="static/멋쟁이사자처럼.png" width="290px" height="200px" style="display: inline-block;">
+                <img src="static/유튜브.png" width="290px" height="200px" style="display: inline-block;">
+                <img src="static/개발.png" width="585px" height="200px"style="display: inline-block;">
             </div>
             <div style="margin-top: 10px; margin-left: 5px;">
                 <div class="heart"></div>
