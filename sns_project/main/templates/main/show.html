@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>오늘의 요리는</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "show.css" %}" />
 </head>
 <body>
-    <p>열심히 배우겠습니다.</p>
+    <div id="main">
+        <h1>
+            <div class="title">오늘 요리는</div>
+            <div class="point">쉽게</div>
+            <div class="point">맛있게</div>
+            <div class="point">간단하게</div>
+        </h1>
+        <p>집에 있는 재료들로<br>
+        알차게 한끼식사를 해결하자</p>
+        <div id = "circle-wrapper">
+            <div class="circle1"><img id="stake" src ="static/스테이크.jpeg"></div>
+            <div class="circle2"><img id="kimchi" src="static/김치.jpg"></div>
+            <div class="circle3"><img id="giblet" src="static/곱창.jpg"></div>
+        </div>
+        <div id ="badge">
+            <img src="static/dish.png" width="50px" height="50px">
+        </div>
+    </div>
 </body>
 </html>
