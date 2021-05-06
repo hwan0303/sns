@@ -19,6 +19,7 @@ from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.showmain),
-    path('seokhwan',views.showshow)
+    path('', views.showbase, name="showbase"),
+    path('mainpage/',views.showmainpage, name="mainpage"),
+    path('show/',views.showshow, name="show"),
 ]

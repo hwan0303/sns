@@ -6,26 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오늘의 요리는</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static "show.css" %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/show.css' %}" />
 </head>
 <body>
-    <div id="main">
-        <h1>
-            <div class="title">오늘 요리는</div>
-            <div class="point">쉽게</div>
-            <div class="point">맛있게</div>
-            <div class="point">간단하게</div>
-        </h1>
-        <p>집에 있는 재료들로<br>
-        알차게 한끼식사를 해결하자</p>
-        <div id = "circle-wrapper">
-            <div class="circle1"><img id="stake" src ="static/스테이크.jpeg"></div>
-            <div class="circle2"><img id="kimchi" src="static/김치.jpg"></div>
-            <div class="circle3"><img id="giblet" src="static/곱창.jpg"></div>
-        </div>
-        <div id ="badge">
-            <img src="static/dish.png" width="50px" height="50px">
-        </div>
-    </div>
+    {% include 'shared/_navbar.html' %}
+    <table style="height: 100%;">
+        <td style="width: 40%;"> 
+            <div id="main">
+                <h1>
+                    <div class="title" style="margin-top: 10px; margin-bottom: 30px;">오늘 요리는</div>
+                    <div class="point" style="color:black;">쉽게</div>
+                    <div class="point"style="color:black;">맛있게</div>
+                    <div class="point"style="color:black;">간단하게</div>
+                </h1>
+                    <p>집에 있는 재료들로<br>
+                        알차게 한끼식사를 해결하자</p>
+                <div id = "circle-wrapper">
+                    <div class="circle1"><img id="stake" src ="{% static 'image/스테이크.jpeg' %}"></div>
+                    <div class="circle2"><img id="kimchi" src="{% static 'image/김치.jpg' %}"></div>
+                    <div class="circle3"><img id="giblet" src="{% static 'image/곱창.jpg' %}"></div>
+                </div>
+                <div id ="badge" style="left: 30%; top:120px;">
+                    <img src="{% static 'image/dish.png' %}" width="50px" height="50px">
+                </div>
+            </div>
+        </td>
+        <td style="width:60%; text-align: center;">
+            <div style="font-size: 50px; color:rgb(219, 123, 33);"><span style="color: black;"><</span>오늘의 요리는<span style="color: black;">></span></div>
+            <div style="padding-left: 5%; padding-right: 5%; line-height: 5em;" >
+                <p>'오늘의 요리'는 제가 멋쟁이사자처럼 9기 지원서에 쓴 구현하고 싶은 서비스로 현재 1인가구의 비율이 늘고 있는 상황과 배달 음식의 경우
+                    2~3인분을 시켜야 하는 상황에서 집에 있는 재료들을 가지고 만들 수 있는 음식 레시피를 보여주는 서비스 입니다. 작동방식은 재료들을 선택하면
+                    그 재료들로 만들 수 있는 음식 레시피를 제공해주는 것입니다. 아직은 메인 화면만 구상하고 
+                    있어서 다음과 같은 디자인(모바일용)으로 생각했고 앞으로 모바일과 웹 둘다 완성해나가는 것이 목표입니다. 
+                </p>
+            </div>
+        </td> 
+    </table>
 </body>
 </html>
