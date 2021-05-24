@@ -23,7 +23,7 @@ urlpatterns = [
     path('introduction/',views.showintroduction, name="introduction"),
     path('show/',views.showshow, name="show"),
     path('post/', views.showpost, name="post"),
-    path('<str:id>',views.detail, name="detail"),
+    path('<int:id>',views.detail, name="detail"),
     path('new/', views.new, name="new"),
     path('create/',views.create, name="create"),
 ]
