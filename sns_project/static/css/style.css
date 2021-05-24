@@ -35,6 +35,7 @@ li {
 }
 .feed {
     display: grid;
+    justify-content: center;
     grid-template-rows: 800px 800px 800px;
     grid-template-columns: 650px 650px;
     margin-left: 100px;
