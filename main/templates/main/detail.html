@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <form action="{%url 'create'%}" method="post">
+        <form action="{%url 'main:create'%}" method="post">
             {%csrf_token%}
         <tr>
           <th scope="row">작성자</th>
@@ -33,7 +33,18 @@
         </tr>
         <tr>
           <th scope="row">내용</th>
-          <td>{{post.body}}</td>
+          <td>
+            {% if post.image %}
+            <p><img src="{{post.image.url}}" alt="사진"></p>
+            {% endif %}
+            <p>{{post.body}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td class = "update" colspan="2" style="text-align: center;">
+            <input type="button" value="수정하기" onclick="location.href='{% url 'main:edit' post.id %}'">
+            <input type="button" value="삭제하기" onclick="location.href='{% url 'main:delete' post.id %}'">
+          </td>
         </tr>
         </tbody>
       </table>
