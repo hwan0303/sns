@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+/*login 화면*/
+body{
+    background-color: #F5DEB3;
+}
+#login-page{
+    text-align: center;
+    margin: 100px 0px;
+}
+#login-page h1 a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 100px;
+}
+.login-sec p a{
+    text-decoration: none;
+    color: 	#FF8C00;
+}
+
+/*signup 화면*/
+body{
+    background-color: #F5DEB3;
+}
+#signup-page{
+    text-align: center;
+    margin: 50px 0px 10px 0px;
+}
+#signup-page p a{
+    text-decoration: none;
+    color: 	#FF8C00;
+}    
+#signup-page h1 a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 100px;
+}
+/*logout 화면 */
+body{
+    background-color: #F5DEB3;
+}
+#logout-page{
+    text-align: center;
+    margin: 100px 0px;
+}
+#logout-page h1 a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 100px;
+}
+
+.upload-btn{
+    background-color: fff;
+    border:black 1px solid;
+    border-radius: 5px;
+}

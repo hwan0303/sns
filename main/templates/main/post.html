@@ -12,6 +12,7 @@
 </head>
 <body>
     {% include 'shared/_navbar.html' %}
+    {% if user.is_authenticated %}
     <div class='write title'>
       <img src="{%static 'image/letter.png' %}" width="100px" height="100px" style="margin-bottom: 20px;">
       <P>방문자 글쓰기</p>
@@ -30,5 +31,12 @@
     <div class="write">
       <a href = "{%url 'main:new'%}">글쓰기</a>
     </div>
+    {% else %}
+    <div class="account" style="text-align: center;margin: 100px 0px;">
+        <h3>로그인 후 이용가능</h3><br>
+        <a style="text-decoration: none; color: black;" href="{% url 'account_login' %}">로그인</a><br>
+        <a style="text-decoration: none; color:black;" href="{% url 'account_signup' %}">회원가입</a>
+    </div>    
+    {% endif %}
 </body>
 </html>

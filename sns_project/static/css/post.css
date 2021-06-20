@@ -27,6 +27,9 @@ div div hr {
     width: 500px;
     margin: 10px auto;
 }
-a {
-    text-decoration: none;
+.account {
+    text-align: center;
+}
+.account a{
+    color: black;
 }
