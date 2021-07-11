@@ -6,6 +6,9 @@ h1 {
     font-family: 'Nanum Pen Script', cursive;
     text-align: center;
 }
+hr {
+  width: 80%;
+}
 table {
     border-collapse: collapse;
     text-align: left;

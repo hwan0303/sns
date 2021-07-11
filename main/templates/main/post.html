@@ -16,21 +16,30 @@
     <div class='write title'>
       <img src="{%static 'image/letter.png' %}" width="100px" height="100px" style="margin-bottom: 20px;">
       <P>방문자 글쓰기</p>
+    </div>
+    <div class="write" style="margin-left: 55%;">
+        <input type="button" value="글쓰기" onclick="location.href='{%url 'main:new'%}'">
     </div>   
-    <div class="write">
-        <span>{% for post in posts %}</span>
-        <div>
-            <h3>{{post.title}}</h3>
-            {{post.writer}}<br>
-            <div>{{post.summary}}
-            <a href="{%url 'main:detail' post.id %}">...자세히</a></div>
-            <hr>
-        </div>
-        {%endfor%}
-    </div>
-    <div class="write">
-      <a href = "{%url 'main:new'%}">글쓰기</a>
-    </div>
+    <table class="profile" style=" width: 60%;">
+        <thead>
+        <tr>
+          <th scope="cols" width=10%>순번</th>
+          <th scope="cols" width=40%>제목</th>
+          <th scope="cols" width=15%>작성자</th>
+          <th scope="cols" width=35%>날짜</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %} 
+        <tr onclick="location.href='{% url 'main:detail' post.id %}'">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.writer }}</td>
+            <td>{{ post.pub_date }}</td>  
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     {% else %}
     <div class="account" style="text-align: center;margin: 100px 0px;">
         <h3>로그인 후 이용가능</h3><br>
@@ -39,4 +48,39 @@
     </div>    
     {% endif %}
 </body>
+<style>
+    table {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    margin: auto;
+  }
+  
+  table thead th {
+    padding: 10px;
+    font-weight: bold;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #c00;
+    background: #dcdcd1;
+  }
+  table tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #ececec;
+  }
+  table td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: white;
+  }
+</style>
 </html>

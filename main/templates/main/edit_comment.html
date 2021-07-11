@@ -38,35 +38,15 @@
             <p>{{post.body}}</p>
           </td>
         </tr>
-        <tr>
-          <td class = "update" colspan="2" style="text-align: center;">
-            <input type="button" value="수정하기" onclick="location.href='{% url 'main:edit' post.id %}'">
-            <input type="button" value="삭제하기" onclick="location.href='{% url 'main:delete' post.id %}'">
-          </td>
-        </tr>
         </tbody>
       </table>
-      <h1>댓글작성</h1>
+      <h1>댓글수정</h1>
       <div style="text-align: center;">
-        <form action="{% url 'main:create_comment' post.id %}" method="POST">
+        <form action="{% url 'main:update_comment' comment.id %}" method="POST">
           {%csrf_token%}
-          <textarea name="content" placeholder="댓글 내용 입력" rows="3" cols="60"></textarea>
-          <button type="submit" value="확인">댓글</button>
+          <textarea name="content" placeholder="댓글 내용 입력" rows="3" cols="60">{{comment.content}}</textarea>
+          <button type="submit" value="댓글 수정">댓글수정</button>
         </form>
-      </div>
-      <h1>댓글작성 목록</h1>
-      <div style="text-align: center;">
-        {% for comment in comments %}
-        <div>
-          작성자 : {{comment.writer}}<br>
-          {{comment.content}}<br>
-          {% if user == comment.writer %}
-          <button><a href="{% url 'main:update_comment' comment.id %}">댓글 수정</a></button>
-			    <button><a href="{% url 'main:delete_comment' comment.id %}">댓글 삭제</a></button>
-          {% endif %}
-          <hr>
-        </div>
-        {% endfor %}
       </div>
     </body>
 </html>

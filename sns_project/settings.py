@@ -152,3 +152,6 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_FORMS={
     'signup':'sns_project.forms.CustomSignupForm',
 }
+#회원가입 오류 해결
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = "none"
