@@ -23,7 +23,15 @@
         <tbody>
         <tr>
           <th scope="row">작성자</th>
+          {% if post.writer %}
+          {% if 'user' in post.writer.username %}
+          <td>{{post.writer.last_name}} {{post.writer.first_name}}</td>
+          {% else %}
           <td>{{post.writer}}</td>
+          {% endif %}
+          {% else %}
+          <td>알 수 없음</td>
+          {% endif %}
         </tr>
         <tr>
           <th scope="row">날짜</th>

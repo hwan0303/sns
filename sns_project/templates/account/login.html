@@ -12,23 +12,45 @@
     <body>
     {% include 'shared/_navbar.html' %}
     {% load i18n %}
+    {% load account socialaccount %}
+    {% providers_media_js %}
+    {% block head_title %}{% endblock %}
     <section id="login-page">
         <div>
             <h1><a href="{% url 'main:mainpage' %}">LIkELION</a></h1>
         </div>
-        <div class="login-sec">
-            <form class="login" method="POST" action="{% url 'account_login' %}">
-                {% csrf_token %} {{ form.as_p}}
-                <div class="login-btn">
-                    <input type="submit" class="upload-btn" value="로그인">
-                </div>
-            </form>
-            <br>
-            <div>
-                <p>회원이 아니십니까? <a href="{% url 'account_signup' %}">회원가입</a></p>
-                
-            </div>
+        <div>
+            <p>회원이 아니십니까? <a href="{% url 'account_signup' %}">회원가입</a></p>             
         </div>
+        <div class="login-sec">
+    {% get_providers as socialaccount_providers %}
+    {% if socialaccount_providers %}
+
+    {% include "socialaccount/snippets/login_extra.html" %}
+
+    {% else %}
+    <p>{% blocktrans %}If you have not created an account yet, then please
+    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+    {% endif %}
+
+    <form class="login" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+    </form>
+    또는
+    <div class="socialaccount_ballot">
+        <ul class="socialaccount_providers">
+        다른 계정으로 로그인&nbsp
+        <button>
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+        </button>
+        </ul>
+        </div>
+    </div>
     </section>
     </body>
 </html>

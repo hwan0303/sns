@@ -34,7 +34,15 @@
         <tr onclick="location.href='{% url 'main:detail' post.id %}'">
             <td>{{ forloop.counter }}</td>
             <td>{{ post.title }}</td>
-            <td>{{ post.writer }}</td>
+            {% if post.writer %}
+            {% if 'user' in post.writer.username %}
+            <td>{{post.writer.last_name}} {{post.writer.first_name}}</td>
+            {% else %}
+            <td>{{post.writer}}</td>
+            {% endif %}
+            {% else %}
+            <td>알 수 없음</td>
+            {% endif %}
             <td>{{ post.pub_date }}</td>  
         </tr>
         {% endfor %}

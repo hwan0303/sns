@@ -16,13 +16,65 @@
             <img src="{%static 'image/teamwork.png' %}" width="100px" height="100px" style="margin-bottom: 20px;">
             <P>마이페이지</p>
         </div>
+        {% if user.username == "user" %}
+        <h2>{{user.last_name}} {{user.first_name}}</h2>
+        {% else %}
         <h2>{{user.username}}</h2>
-        <span>글목록</span>
-        <div>
-            {% for post in posts %}
-                <a href="{% url 'main:detail' post.id %}" >{{post.title}}</a><hr>
+        {% endif %}
+        <span>내가 쓴 글 목록</span>
+        <table class="profile" style=" width: 60%;">
+            <thead>
+            <tr>
+              <th scope="cols" width=10%>순번</th>
+              <th scope="cols" width=40%>제목</th>
+              <th scope="cols" width=35%>날짜</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %} 
+            <tr onclick="location.href='{% url 'main:detail' post.id %}'">
+                <td>{{ forloop.counter }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.pub_date }}</td>  
+            </tr>
             {% endfor %}
-        </div>
+            </tbody>
+        </table>
     </div>    
     </body>
+    <style>
+        table {
+    border-collapse: collapse;
+    text-align: left;
+    line-height: 1.5;
+    border-left: 1px solid #ccc;
+    margin: auto;
+  }
+  
+  table thead th {
+    padding: 10px;
+    font-weight: bold;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 2px solid #c00;
+    background: #dcdcd1;
+  }
+  table tbody th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: #ececec;
+  }
+  table td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background: white;
+  }
+    </style>
 </html>
