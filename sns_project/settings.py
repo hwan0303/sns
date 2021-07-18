@@ -151,6 +151,7 @@ AUTHENTICATION_BACKENDS=[
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
+SIGNUP_REDIRECT_URL='/'
 
 ACCOUNT_FORMS={
     'signup':'sns_project.forms.CustomSignupForm',

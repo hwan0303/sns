@@ -4,6 +4,7 @@ from .views import *
 app_name = "main"
 urlpatterns = [
     path('', showmainpage, name="mainpage"),
+    path('main/', showmainpage, name="mainpage"),
     path('introduction/',showintroduction, name="introduction"),
     path('show/',showshow, name="show"),
     path('post/',showpost, name="post"),

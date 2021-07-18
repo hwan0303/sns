@@ -35,10 +35,10 @@
             <td>{{ forloop.counter }}</td>
             <td>{{ post.title }}</td>
             {% if post.writer %}
-            {% if 'user' in post.writer.username %}
-            <td>{{post.writer.last_name}} {{post.writer.first_name}}</td>
+            {% if 'user' in post.writer.username and post.writer.username != 'user' %}
+            <td><a href="{% url 'users:mypage' post.writer.id %}">{{post.writer.last_name}} {{post.writer.first_name}}</a></td>
             {% else %}
-            <td>{{post.writer}}</td>
+            <td><a href="{% url 'users:mypage' post.writer.id %}">{{post.writer}}</a></td>
             {% endif %}
             {% else %}
             <td>알 수 없음</td>

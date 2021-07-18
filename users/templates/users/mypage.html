@@ -21,6 +21,32 @@
         {% else %}
         <h2>{{user.username}}</h2>
         {% endif %}
+        {% if request.user != user %}
+        {% if request.user.profile in user.profile.followers.all %}
+        <a href="{% url 'users:follow' user.id %}"><button>언팔로우</button></a>
+        {% else %}
+        <a href="{% url 'users:follow' user.id %}"><button>팔로우</button></a>
+        {% endif %}
+        {% endif %}
+        <div class="container">
+          <h3>팔로워{{user.profile.followers.count}}명</h3>
+          {%for follower in user.profile.followers.all %}
+          {% if follower.user.username == "user" %}
+          <a href="{% url 'users:mypage' follower.user.id %}">{{follower.user.last_name}} {{follower.user.first_name}}</a>
+          {% else %}
+          <a href="{% url 'users:mypage' follower.user.id %}">{{follower.user.username}}</a>
+          {% endif %}
+          {% endfor %}
+          <h3>팔로잉{{user.profile.followings.count}}명</h3>
+          {% for following in user.profile.followings.all %}
+          {% if following.user.username == "user" %}
+          <a href="{% url 'users:mypage' following.user.id %}">{{following.user.last_name}} {{following.user.first_name}}</a>
+          {% else %}
+          <a href="{%url 'users:mypage' following.user.id%}">{{following.user.username}}</a>
+          {% endif %}
+          {% endfor %}
+          </div>
+      <div>  
         <span>내가 쓴 글 목록</span>
         <table class="profile" style=" width: 60%;">
             <thead>
