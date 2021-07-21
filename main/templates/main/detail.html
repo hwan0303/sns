@@ -41,12 +41,14 @@
             <p>{{post.body}}</p>
           </td>
         </tr>
+        {% if user == post.writer %}
         <tr>
           <td class = "update" colspan="2" style="text-align: center;">
             <input type="button" value="수정하기" onclick="location.href='{% url 'main:edit' post.id %}'">
             <input type="button" value="삭제하기" onclick="location.href='{% url 'main:delete' post.id %}'">
           </td>
         </tr>
+        {% endif %}
         </tbody>
       </table>
       <h1>댓글작성</h1>
