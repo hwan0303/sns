@@ -5,8 +5,10 @@ from django.contrib.auth.models import User
 # Create your views here.
 def mypage(request, id):
     user = get_object_or_404(User, pk = id)
+    login_user = request.user
     context = {
         'user':user,
+        'login_user':login_user,
         'posts':Post.objects.filter(writer=user),
         'followings':user.profile.followings.all(),
         'followers':user.profile.followers.all(),

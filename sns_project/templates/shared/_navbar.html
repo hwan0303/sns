@@ -19,11 +19,51 @@
             <a class="nav-link" href="{% url 'main:post' %}">방문자 글쓰기</a>
           </li>
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_logout' %}">로그아웃</a>
+          <li class="nav-item dropdown"  style="position: absolute; right: 17%;">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              팔로워
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="nav-item">팔로워 : {{request.user.profile.followers.count}} 명 </li>
+              {%for follower in request.user.profile.followers.all %}
+              {% if follower.user.username == "user" %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:mypage' follower.user.id %}">
+                  {{follower.user.last_name}} {{follower.user.first_name}}
+                  </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'users:mypage' follower.user.id %}">
+                    {{follower.user.username}}
+                  </a>
+                </li>  
+                {% endif %}
+                {% endfor %}
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:mypage' request.user.id %}">마이페이지</a>
+          <li class="nav-item dropdown"  style="position: absolute; right: 12%;">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              팔로잉
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="nav-item">팔로잉 : {{request.user.profile.followings.count}} 명 </li>
+              {%for following in request.user.profile.followings.all %}
+              {% if following.user.username == "user" %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:mypage' following.user.id %}">
+                  {{following.user.last_name}} {{following.user.first_name}}
+                  </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'users:mypage' following.user.id %}">
+                    {{following.user.username}}
+                  </a>
+                </li>  
+                {% endif %}
+                {% endfor %}
+            </ul>
           </li>
           {% else %}
           <li class="nav-item">
@@ -31,6 +71,25 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'account_signup' %}">회원가입</a>
+          </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown" style="position: absolute; right: 5%;">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {% if request.user.username == "user" %}
+              {{request.user.last_name}} {{request.user.first_name}}
+              {% else %}
+              {{request.user.username}}
+              {% endif %}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'account_logout' %}">로그아웃</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:mypage' request.user.id %}">마이페이지</a>
+              </li>
+            </ul>
           </li>
           {% endif %}
         </ul>
