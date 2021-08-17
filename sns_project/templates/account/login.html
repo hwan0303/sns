@@ -1,56 +1,40 @@
+{% load static %}
+{% load account socialaccount %}
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        {% load static %}
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{%static 'css/account.css' %}">
-    </head>
-    <body>
-    {% include 'shared/_navbar.html' %}
-    {% load i18n %}
-    {% load account socialaccount %}
-    {% providers_media_js %}
-    {% block head_title %}{% endblock %}
-    <section id="login-page">
-        <div>
-            <h1><a href="{% url 'main:mainpage' %}">LIkELION</a></h1>
-        </div>
-        <div>
-            <p>회원이 아니십니까? <a href="{% url 'account_signup' %}">회원가입</a></p>             
-        </div>
-        <div class="login-sec">
-    {% get_providers as socialaccount_providers %}
-    {% if socialaccount_providers %}
-
-    {% include "socialaccount/snippets/login_extra.html" %}
-
-    {% else %}
-    <p>{% blocktrans %}If you have not created an account yet, then please
-    <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-    {% endif %}
-
-    <form class="login" method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-    </form>
-    또는
-    <div class="socialaccount_ballot">
-        <ul class="socialaccount_providers">
-        다른 계정으로 로그인&nbsp
-        <button>
-        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-        </button>
-        </ul>
-        </div>
+<head>
+  <link href="{% static 'css/login.css' %}?ab" rel="stylesheet" />
+</head>
+<body>
+  <section class="login-form">
+    <div class="box">
+    <h1><a href="{% url 'main:mainpage' %}">likelion</a></h1>
+    <div class = "caption">
+      회원이 아니신가요? <a href = "{% url 'account_signup' %}">회원가입</a>
     </div>
-    </section>
-    </body>
-</html>
+    <form method="POST" action="{% url 'account_login' %}">
+      {% csrf_token %} 
+      <div class="int-area">
+        <input type="text" name="login" autocomplete="username" required="" id="id_login">
+        <label for="id_login">아이디</label>
+      </div>  
+      <div class="int-area">
+        <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+        <label for="id_password">비밀번호</label>
+      </div>  
+      <div class="btn-area">
+        <input  type="submit" value="로그인">
+      </div>
+    </form>
+    <div class="btn-area">
+      <ul class="socialaccount_providers" style="text-align: center;">
+      다른 계정으로 로그인&nbsp
+      <button>
+      {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      </button>
+      </ul>
+      </div>
+  </div>
+
+    </div>
+  </section>
+</body>

@@ -151,11 +151,8 @@ AUTHENTICATION_BACKENDS=[
 SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/'
-SIGNUP_REDIRECT_URL='/'
+SIGNUP_REDIRECT_URL='main/'
 
-ACCOUNT_FORMS={
-    'signup':'sns_project.forms.CustomSignupForm',
-}
 #회원가입 오류 해결
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = "none"
